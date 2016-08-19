@@ -1,0 +1,41 @@
+# pack-refs with: peeled fully-peeled 
+1c8c2379ccf5ab9dd7cb46be965821d22173bcf4 refs/remotes/origin/1.8
+1702d953330b40d4ab6a49aa837ea5dee4c4d151 refs/remotes/origin/1.9
+8bcfc3bf379eeadd28dbcdbbce3662c3527c1806 refs/remotes/origin/HTMLReader
+868d14a84d92e893c1a6ab71c03dcca5a6101879 refs/remotes/origin/OOCalcReader
+c770117193e9081e8bcf51a069605b9955bfcc1f refs/remotes/origin/autoShapes
+ef2de9cc5e80dd9943fd9408fbd4860bb02b3232 refs/remotes/origin/autofilter
+65f6ebf0490a0d87ba56e977db417085e8849853 refs/remotes/origin/calcEngine
+7b83894b10218451031ec801cfc981a9af033e28 refs/remotes/origin/cellRestructure
+4edc6863699d50638b7b231205482b675985f876 refs/remotes/origin/charts
+fcc5c6585574054bd2dce530d5fb3f5da745bc49 refs/remotes/origin/develop
+4bd9df5c81a263c3caa33878155d60d7d2610c6d refs/remotes/origin/develop_2.0.0
+28631523993b191b0692d5e1be3afb8beff2c302 refs/remotes/origin/experimental
+049e85ae98a90869e1bc83087f755010e9223091 refs/remotes/origin/master
+b7acf2bbe414b1b02f90188d4cfe4df1943b2f97 refs/remotes/origin/style
+7be6a5a79fd00d7e4d189f41d3ce1f1cdabeadda refs/tags/1.7.8
+^dfcd839e61b5534039b1b9d15a95d8a6d2c1cfd0
+59c4a6f2023937e4f6d12f9678ae445c8753dd70 refs/tags/1.7.8rc1
+^e419b92765eb50f06893dba58080a35083d72a4f
+fcc7cd3dd199258bfe340fcd5f80735d7a8a77c5 refs/tags/1.7.8rc2
+^23fe9937fe5e814f9055f053d40e0825e54e1b8c
+7e22a4a527ece0ed7a1e4e540ee7dfe0f14aae4e refs/tags/1.7.8rc3
+^d7e4aaf80b16467f75ac581a49c94cb70ee9b48d
+de4c5ce58fa0fdc15f7ee9632c4b4f2a41a11fbb refs/tags/1.7.9
+^7a7634fba664249a04fc771df677a9b9f755d7ec
+1669c02ca50faa667bbe2c7a2d09410600a6d70b refs/tags/1.7.9-rc1
+^d79bdc5b19ba10326ad92876b0eb65ead5b5d6da
+c4ab324c20089fc3438b600489cd56467694f16f refs/tags/1.8.0
+^e69a5e4d0ffa7fb6f171859e0a04346e580df30b
+31e1d7f1eee68d70bd6db3cde2661aa2240443ce refs/tags/1.8.0rc1
+^992aee683ac0e9f8acfa12a52a4f3cc19a9e3808
+b73c4a31151598ffe0d7797142bac9a7292f1205 refs/tags/1.8.0rc2
+^6c8884b2eba9473e9859378cb640fd40cdc81911
+d128ae8158aae74f2caa5de3b154b3373d179faa refs/tags/1.8.0rc3
+^8f265a934297c8b8fe92f2cd03bcbd0f1316df70
+55ee5e70bb1668b53dc45daac162471fc7a0ead6 refs/tags/1.8.0rc4
+^03226909910dd2079af1b3c21895c7c357f314bb
+132eafe3a44bcfba3227876f1ce347c2e75f47a6 refs/tags/1.8.1
+^372c7cbb695a6f6f1e62649381aeaa37e7e70b32
+8ca15b9652728f0d79c5c45b3bb8c260faff9acb refs/tags/PHPExcel_1.7.8
+^dfcd839e61b5534039b1b9d15a95d8a6d2c1cfd0
