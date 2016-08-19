@@ -44,6 +44,20 @@ return [
                 'database'=>1, // database #2
             ],
         ],
+        'html2pdf' => [
+            'class' => 'yii2tech\html2pdf\Manager',
+            'viewPath' => '@app/pdf',
+            'converter' =>[
+                'class' => 'yii2tech\html2pdf\converters\Wkhtmltopdf',
+                // 'class' => 'yii2tech\html2pdf\converters\Mpdf',
+                // 'class' => 'yii2tech\html2pdf\converters\Mpdf',
+                // 'class' => 'yii2tech\html2pdf\converters\Dompdf',
+                'defaultOptions' => [
+                    'pageSize' => 'A4'
+                ],
+            ] 
+
+        ],
     ],
     'params' => $params,
 ];

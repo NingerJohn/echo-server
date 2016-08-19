@@ -14,6 +14,15 @@ class TestController extends \common\core\BaseController
     public $enableCsrfValidation = true;
 
 
+    public function actionHtmlpdf($value='')
+    {
+        # code...
+        $html_content = file_get_contents('https://www.baidu.com/');
+        \Yii::$app->html2pdf
+    ->convert($html_content)
+    ->saveAs('/path/to/output.pdf'); // sh: 1: wkhtmltopdf: not found
+    }
+
 	public function actionPhpexcel($value='')
 	{
 		# code...
