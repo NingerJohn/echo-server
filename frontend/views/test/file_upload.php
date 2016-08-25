@@ -1,7 +1,10 @@
 <script type="text/javascript" src="/js/common/jquery.form.js"></script>
 
 
-
+<?php
+$two='222222222';
+echo $this->render('one');
+?>
 
 <form class="user-form">
 	
