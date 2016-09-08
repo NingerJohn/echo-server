@@ -19,7 +19,7 @@ class Generate
      * @param  integer $type 生成类型：1：默认常用；2：其他
      * @return mixed         生成的设备ID
      */
-    public function deviceId($type=1)
+    public static function deviceID($type=1)
     {
         // 
         if ( $type == 1 ) {

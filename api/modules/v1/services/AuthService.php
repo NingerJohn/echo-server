@@ -27,17 +27,44 @@ class AuthService extends \api\models\BaseModel
      * @return array            生成的数据
      * 
      */
-    public static function generateAuthData($user_data)
+    public static function generateAuthData($user_data=null)
     {
         // 根据客户端数据来生成验证数据
         // request_time, client_type, device_id, ip_address
         $fin_res['request_time'] = $user_data['request_time'];
         $fin_res['client_type'] = $user_data['client_type'];
-        $fin_res['device_id'] = $user_data['device_id'];
+        $fin_res['device_id'] = \common\libraries\Generate::deviceID();
         $fin_res['ip_address'] = $user_data['ip_address'];
-        $fin_res['token'] = md5( slef::SITE_DOMAIN . $user_data['request_time'] . $user_data['client_type'] . $user_data['device_id'] . $user_data['ip_address']);
+        $fin_res['token'] = md5( self::SITE_DOMAIN . $user_data['request_time'] . $user_data['client_type'] . $user_data['device_id'] . $user_data['ip_address']);
         return $fin_res;
     }
+
+    /**
+     * 验证数据是否正确
+     * 
+     * @author NJ 2016年09月09日00:28:10
+     * @param  array $user_data 用户传递过来的数据
+     * @return boolean            true 或 false
+     * 
+     */
+    public function authDataValidate($user_data=null)
+    {
+        # code...
+        // $fin_res['request_time'] = $user_data['request_time'];
+        // $fin_res['client_type'] = $user_data['client_type'];
+        // $fin_res['device_id'] = $user_data['device_id'];
+        // $fin_res['ip_address'] = $user_data['ip_address'];
+        $token = md5( self::SITE_DOMAIN . $user_data['request_time'] . $user_data['client_type'] . $user_data['device_id'] . $user_data['ip_address']);
+        if ( $user_data['token'] == $token ) {
+            # code...
+            return true;
+        } else {
+            # code...
+            return false;
+        }
+    }
+
+
 
     private function _paramsCheck($params=null, $rules=null)
     {
