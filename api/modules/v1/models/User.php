@@ -14,6 +14,7 @@ use Yii;
  * @property string $email
  * @property string $mobile
  * @property string $password
+ * @property string $hash_salt
  * @property string $avatar
  * @property string $last_login_ip
  * @property integer $last_login_time
@@ -44,7 +45,7 @@ use Yii;
  * @property string $work_area
  * @property string $home_address
  */
-class User extends \app\models\BaseModel
+class User extends \api\models\BaseModel
 {
     /**
      * @inheritdoc
@@ -64,7 +65,7 @@ class User extends \app\models\BaseModel
             [['user_name', 'real_name', 'nickname', 'university_name'], 'string', 'max' => 50],
             [['email', 'home_address'], 'string', 'max' => 100],
             [['mobile', 'last_login_ip'], 'string', 'max' => 15],
-            [['password'], 'string', 'max' => 32],
+            [['password', 'hash_salt'], 'string', 'max' => 32],
             [['avatar', 'id_image'], 'string', 'max' => 150],
             [['id_number', 'birth_province', 'birth_city', 'country_name', 'work_province', 'work_city', 'work_area'], 'string', 'max' => 20],
             [['qq', 'major_name', 'nationality'], 'string', 'max' => 255],
@@ -84,6 +85,7 @@ class User extends \app\models\BaseModel
             'email' => Yii::t('user', '邮箱地址'),
             'mobile' => Yii::t('user', '手机号码'),
             'password' => Yii::t('user', '登陆密码'),
+            'hash_salt' => Yii::t('user', '密码盐值'),
             'avatar' => Yii::t('user', '头像图片地址'),
             'last_login_ip' => Yii::t('user', '上次登陆IP地址'),
             'last_login_time' => Yii::t('user', '上次登陆时间'),

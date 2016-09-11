@@ -1,7 +1,7 @@
 <?php 
 
-echo $this->params['one'];
-echo $this->params['two'];
+echo @$this->params['one'];
+echo @$this->params['two'];
 
 
 

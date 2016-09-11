@@ -95,6 +95,13 @@ class ComposerStaticInit97f60f486aee3c9bc14072d1bbd961d8
                 0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
             ),
         ),
+        'D' => 
+        array (
+            'Diff' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpspec/php-diff/lib',
+            ),
+        ),
     );
 
     public static $classMap = array (

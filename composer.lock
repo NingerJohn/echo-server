@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "391253efbb299295631ab09e0e06d628",
-    "content-hash": "68c2cf33cd32ee7a9ea81a2a184d5a8e",
+    "hash": "6a711813c3f270e6d459cd4c6bcaf378",
+    "content-hash": "ccc6bcb17b578799c93cdb6d36469aa4",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -171,6 +171,44 @@
                 "xlsx"
             ],
             "time": "2016-06-05 15:48:23"
+        },
+        {
+            "name": "phpspec/php-diff",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpspec/php-diff.git",
+                "reference": "0464787bfa7cd13576c5a1e318709768798bec6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/phpspec/php-diff/0464787bfa7cd13576c5a1e318709768798bec6a.zip",
+                "reference": "0464787bfa7cd13576c5a1e318709768798bec6a",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Diff": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Boulton",
+                    "homepage": "http://github.com/chrisboulton"
+                }
+            ],
+            "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
+            "time": "2016-04-07 12:29:16"
         },
         {
             "name": "yii2tech/html2pdf",
@@ -813,12 +851,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "5d5239416615e317a9ae693002253b0f5588e389"
+                "reference": "41433b0d64caa3f2a73e415596dfa73490c262fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/phpunit/5d5239416615e317a9ae693002253b0f5588e389.zip",
-                "reference": "5d5239416615e317a9ae693002253b0f5588e389",
+                "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/phpunit/41433b0d64caa3f2a73e415596dfa73490c262fc.zip",
+                "reference": "41433b0d64caa3f2a73e415596dfa73490c262fc",
                 "shasum": ""
             },
             "require": {
@@ -877,7 +915,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-08-17 04:23:12"
+            "time": "2016-08-28 06:58:45"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1313,12 +1351,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "5b61eed69891b2add260a3741660fa68c38900ae"
+                "reference": "aa8be2235b5dd4e472424552390609f61996f5ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/yaml/5b61eed69891b2add260a3741660fa68c38900ae.zip",
-                "reference": "5b61eed69891b2add260a3741660fa68c38900ae",
+                "url": "https://packagist.phpcomposer.com/files/symfony/yaml/aa8be2235b5dd4e472424552390609f61996f5ab.zip",
+                "reference": "aa8be2235b5dd4e472424552390609f61996f5ab",
                 "shasum": ""
             },
             "require": {
@@ -1360,7 +1398,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-08-13 18:49:42"
+            "time": "2016-09-02 02:14:06"
         },
         {
             "name": "webmozart/assert",

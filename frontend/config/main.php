@@ -59,5 +59,6 @@ return [
 
         ],
     ],
+    'defaultRoute'=>'default/index', // 默认控制器方法
     'params' => $params,
 ];

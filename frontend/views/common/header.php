@@ -1,11 +1,25 @@
-<?php 
+<?php
+use \yii\web\View;
+use frontend\assets\AppAsset;
 
-$two = '2';
-$this->params['two'] = '2';
+
+AppAsset::register($this);  // $this 代表视图对象
+
+$this->registerJsFile('b.js', ['depends'=>['frontend\assets\AppAsset'], 'position'=>View::POS_HEAD]);
 
 ?>
 
 <?php //$this->render('@app/views/test/one.php') ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <?php $this->head() ?>
 
-head
+</head>
+<body>
+    
+</body>
+</html>
