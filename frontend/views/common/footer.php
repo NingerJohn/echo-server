@@ -10,3 +10,10 @@ echo @$this->params['two'];
 ?>
 
 footer
+
+
+<?php $this->endBody(); ?>
+</body>
+</html>
+
+<?php $this->endPage(); ?>

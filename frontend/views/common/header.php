@@ -8,9 +8,7 @@ AppAsset::register($this);  // $this 代表视图对象
 $this->registerJsFile('b.js', ['depends'=>['frontend\assets\AppAsset'], 'position'=>View::POS_HEAD]);
 
 ?>
-
-<?php //$this->render('@app/views/test/one.php') ?>
-
+<?php $this->beginPage(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +18,5 @@ $this->registerJsFile('b.js', ['depends'=>['frontend\assets\AppAsset'], 'positio
 
 </head>
 <body>
+<?php $this->beginBody(); ?>
     
-</body>
-</html>

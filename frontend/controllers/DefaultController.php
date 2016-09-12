@@ -1,14 +1,14 @@
-<?php 
+<?php
 namespace frontend\controllers;
 
 // use \yii\web\Controller;
 
 /**
-* 
+*
 */
 class DefaultController extends \frontend\core\FrontController
 {
-	
+
 
 	public function actionIndex()
 	{
@@ -33,28 +33,3 @@ class DefaultController extends \frontend\core\FrontController
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
