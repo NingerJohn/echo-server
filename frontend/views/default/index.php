@@ -1,30 +1,7 @@
-<script type="text/javascript">
-	var wsServer = 'ws://127.0.0.1:9501';
-try{
-	var websocket = new WebSocket(wsServer); 
-
-}catch(err){
-	console.log(err);
-}
-
-	websocket.onopen = function (evt) { 
-		console.log("Connected to WebSocket server.");
-	}; 
-
-	websocket.onclose = function (evt) { 
-		console.log("Disconnected"); 
-	}; 
-
-	websocket.onmessage = function (evt) { 
-		console.log('Retrieved data from server: ' + evt.data); 
-	}; 
-
-	websocket.onerror = function (evt, e) {
-		console.log('Error occured: ' + evt.data);
-	};
-
-
-</script>
-
-
-
+<div class="container" style="background-color: #974747;">
+    <div class="col-lg-1 col-md-1">
+        <div class="row text-center" style="background-color: #61A1E3">
+            eCho - 面向Ubuntu使用者的即时聊天软件
+        </div>
+    </div>
+</div>

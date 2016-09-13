@@ -59,6 +59,11 @@ return [
 
         ],
     ],
+    'modules' => [ // 模块添加配置
+        'my' => [ // 会员中心模块
+            'class' => 'frontend\modules\my\myModule',
+        ],
+    ],
     'defaultRoute'=>'default/index', // 默认控制器方法
     'params' => $params,
 ];

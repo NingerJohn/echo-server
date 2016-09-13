@@ -4,7 +4,10 @@ namespace frontend\controllers;
 // use \yii\web\Controller;
 
 /**
-*
+* 网站默认控制器，包括注册和登陆
+* 
+* @author NJ 2016年09月14日05:47:44
+* 
 */
 class DefaultController extends \frontend\core\FrontController
 {
@@ -12,12 +15,21 @@ class DefaultController extends \frontend\core\FrontController
 
 	public function actionIndex()
 	{
-		# code...
+		// code...
+        // 
+        // 
+        // var_dump('网站首页');
+        $this->view->title = 'eCho - 面向Ubuntu使用者的即时聊天软件';
 		$view_data = [];
 		return $this->render('index', $view_data);
 	}
 
-
+    /**
+     * 注册页面
+     * @author NJ 2016年09月14日06:03:23
+     * @param  string $value 默认参数
+     * @return string        页面
+     */
     public function actionRegister($value='')
     {
         # code...

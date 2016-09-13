@@ -1,3 +1,5 @@
+
+
 <?php echo $this->renderFile('@frontend/views/common/header.php') ?>
 
 <?php echo $content; ?>

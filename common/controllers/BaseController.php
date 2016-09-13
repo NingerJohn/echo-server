@@ -10,8 +10,6 @@ namespace common\controllers;
 class BaseController extends \yii\web\Controller
 {
     
-    
-
     /**
      * 简化get获取数据
      * 
@@ -42,7 +40,17 @@ class BaseController extends \yii\web\Controller
         return \Yii::$app->request->post($name, $default);
     }
 
-
+    /**
+     * 简化获取session方法
+     * @author NJ 2016年09月14日06:18:35
+     * @param  string $sess_name session名字
+     * @return mixed       session值
+     */
+    public function getSess($sess_name=null)
+    {
+        # code...
+        return \Yii::$app->session->get($sess_name);
+    }
 
 }
 

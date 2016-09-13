@@ -13,7 +13,7 @@ $this->registerJsFile('b.js', ['depends'=>['frontend\assets\AppAsset'], 'positio
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title><?php echo $this->title; ?></title>
     <?php $this->head() ?>
 
 </head>
