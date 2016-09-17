@@ -44,6 +44,8 @@ use Yii;
  * @property integer $work_area_id
  * @property string $work_area
  * @property string $home_address
+ * @property string $register_verify_code
+ * @property integer $is_verified
  */
 class User extends \common\models\FrontModel
 {
@@ -61,7 +63,7 @@ class User extends \common\models\FrontModel
     public function rules()
     {
         return [
-            [['last_login_time', 'role_id', 'user_status', 'gender', 'birth_time', 'birth_province_id', 'birth_city_id', 'political_status', 'major_id', 'country_id', 'university_id', 'work_province_id', 'work_city_id', 'work_area_id'], 'integer'],
+            [['last_login_time', 'role_id', 'user_status', 'gender', 'birth_time', 'birth_province_id', 'birth_city_id', 'political_status', 'major_id', 'country_id', 'university_id', 'work_province_id', 'work_city_id', 'work_area_id', 'is_verified'], 'integer'],
             [['user_name', 'real_name', 'nickname', 'university_name'], 'string', 'max' => 50],
             [['email', 'home_address'], 'string', 'max' => 100],
             [['mobile', 'last_login_ip'], 'string', 'max' => 15],
@@ -69,6 +71,7 @@ class User extends \common\models\FrontModel
             [['avatar', 'id_image'], 'string', 'max' => 150],
             [['id_number', 'birth_province', 'birth_city', 'country_name', 'work_province', 'work_city', 'work_area'], 'string', 'max' => 20],
             [['qq', 'major_name', 'nationality'], 'string', 'max' => 255],
+            [['register_verify_code'], 'string', 'max' => 10],
         ];
     }
 
@@ -81,7 +84,7 @@ class User extends \common\models\FrontModel
             'user_id' => Yii::t('user', '用户ID'),
             'user_name' => Yii::t('user', '用户名'),
             'real_name' => Yii::t('user', '真实姓名'),
-            'nickname' => Yii::t('user', 'Nickname'),
+            'nickname' => Yii::t('user', '昵称'),
             'email' => Yii::t('user', '邮箱地址'),
             'mobile' => Yii::t('user', '手机号码'),
             'password' => Yii::t('user', '登陆密码'),
@@ -115,6 +118,8 @@ class User extends \common\models\FrontModel
             'work_area_id' => Yii::t('user', '工作区ID'),
             'work_area' => Yii::t('user', '工作区名字'),
             'home_address' => Yii::t('user', '家庭住址（全）'),
+            'register_verify_code' => Yii::t('user', '注册验证码（邮件）'),
+            'is_verified' => Yii::t('user', '是否验证有效（-1：未验证；1：验证通过）'),
         ];
     }
 }

@@ -33,6 +33,8 @@ class DefaultController extends \frontend\core\FrontController
     public function actionRegister($value='')
     {
         # code...
+        $this->view->title = '注册页面';
+        $view_data = [];
         return $this->render('register', $view_data);
     }
 
