@@ -1,4 +1,6 @@
-<div class="fluid-container" style="background-color: #974747; height: 100%">
+<!-- 网站首页 -->
+
+<div class="fluid-container" style="background-color: #974747; height: 100%; width:100%;position: absolute;">
 
     <div class="row text-center" >
         <div class="col-lg-6 col-lg-offset-3" style="background-color: #61A1E3; height:380px;margin-top: 10%;border-radius: 8px 8px;">

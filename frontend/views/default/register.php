@@ -4,6 +4,7 @@ use \yii\helpers\Url;
 
 $this->registerJsFile('/v1/js/layer/layer.js', ['position'=>View::POS_END]);
 $this->registerJsFile('/v1/js/validato.js', ['position'=>View::POS_END]);
+$this->registerJsFile('/v1/js/common.js', ['position'=>View::POS_HEAD]);
 
 
 ?>
@@ -14,6 +15,7 @@ $this->registerJsFile('/v1/js/validato.js', ['position'=>View::POS_END]);
         <div class="row">
             <div class="col-lg-4 col-lg-offset-5">
                 <form action="" class="register-form form-inline col-lg-8">
+                	<input type="hidden" name="_csrf" value="<?php echo \Yii::$app->request->getCsrfToken(); ?>">
                     <div class="form-group">
                         <input type="text" name="email" class="form-control" placeholder="请输入邮箱">
                     </div>
@@ -44,61 +46,47 @@ $('.submit-btn').click(function(){
     var options = {
       rules:{
         email:{
-          required:true,
-          email:true, 
-          minlength:4,
+          required:true, email:true, minlength:4,
         },
         email_code:{
-          required:true,
-          digits:true,
-          fixlength:6,
+          required:true, digits:true, fixlength:6,
         },
         pwd:{
-          required:true,
-          minlength:6,
+          required:true, minlength:6,
         },
         confirm_pwd:{
-          required:true,
-          minlength:6,
-          same:'pwd',
+          required:true, minlength:6, same:'pwd',
         }
       },
       errorTips:{
         email:{
-          required:'请输入邮箱',
-          email:'邮箱格式不正确',
+          required:'请输入邮箱', email:'邮箱格式不正确',
         },
         email_code:{
-          required:'请输入邮箱验证码',
-          digits:'箱验证码只能是数字',
-          fixlength:'邮箱验证码必须是6位',
+          required:'请输入邮箱验证码', digits:'箱验证码只能是数字', fixlength:'邮箱验证码必须是6位',
         },
         pwd:{
-          required:'请输入密码',
-          minlength:'密码不能少于6个字符',
+          required:'请输入密码', minlength:'密码不能少于6个字符',
         },
         confirm_pwd:{
-          required:'请输入确认密码',
-          minlength:'确认密码不能少于6个字符',
-          same:'确认密码必须与密码一致',
+          required:'请输入确认密码', minlength:'确认密码不能少于6个字符', same:'确认密码必须与密码一致',
         },
       },
       errorPopType:['layer'],
       validatePassed:function(){
         // 验证通过以后进行注册
-        var url = '<?php echo Url::to(['/mall/shopmanage/companyprofile']) ?>';
+        var url = '<?php echo Url::to(['/default/reg-submit']) ?>';
+        var data = $('.register-form').serialize();
         repeatLimit = true;
         var result = ajaxRequest(url, data);
         if ( result.status == 1 ) {
-          // 更新成功
-          // layer.msg('');
+          // 注册成功
           setTimeout(function(){
-            window.location.href = '/mall/shopmanage/complete-certificate-upload.html';
-          }, 500);
-
+            window.location.href = '<?php echo Url::to(['/default/login']) ?>';
+          }, 1000);
           return false;
         } else {
-          // 更新失败
+          // 注册失败
           repeatLimit = false;
           layer.msg(result.msg);
           return false;
