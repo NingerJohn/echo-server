@@ -7,9 +7,9 @@ use Yii;
  * Base model
  *
  * @property integer $id
- * 
+ *
  */
-class BaseModel extends \yii\db\ActiveRecord
+class BaseARM extends \yii\db\ActiveRecord
 {
-    
+
 }

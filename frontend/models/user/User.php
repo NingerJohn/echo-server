@@ -47,7 +47,7 @@ use Yii;
  * @property string $register_verify_code
  * @property integer $is_verified
  */
-class User extends \common\models\FrontModel
+class User extends \common\models\FrontARM
 {
     /**
      * @inheritdoc

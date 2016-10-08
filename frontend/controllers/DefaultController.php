@@ -5,9 +5,9 @@ namespace frontend\controllers;
 
 /**
 * 网站默认控制器，包括注册和登陆
-* 
+*
 * @author NJ 2016年09月14日05:47:44
-* 
+*
 */
 class DefaultController extends \frontend\core\FrontController
 {
@@ -16,8 +16,8 @@ class DefaultController extends \frontend\core\FrontController
 	public function actionIndex()
 	{
 		// code...
-        // 
-        // 
+        //
+        //
         // var_dump('网站首页');
         $this->view->title = 'eCho - 面向Ubuntu使用者的即时聊天软件';
 		$view_data = [];
@@ -38,15 +38,29 @@ class DefaultController extends \frontend\core\FrontController
         return $this->render('register', $view_data);
     }
 
+	public function actionTest()
+	{
+		# code...
+		$model = new \frontend\models\user\UserRegisterForm(['scenario'=>'register']);
+		if ( $model->load($this->post()) && $model->validate() ) {
+			# code...
+			var_dump($this->post());exit;
+		}else{
+
+		}
+
+		return $this->render('register_page', ['model'=>$model]);
+	}
+
     /**
      * 注册提交方法
-     * 
+     *
      * @author 2016年09月30日16:15:12
      * @return json json结果
      */
     public function actionRegSubmit()
     {
-    	// 
+    	//
     	\common\libraries\Generate::passwordSalt();
     	var_dump( $this->post() );
     }

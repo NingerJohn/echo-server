@@ -7,9 +7,9 @@ use Yii;
  * Base model
  *
  * @property integer $id
- * 
+ *
  */
-class FrontModel extends BaseModel
+class BaseM extends \yii\base\Model
 {
-    
+
 }

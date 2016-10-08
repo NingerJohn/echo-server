@@ -17,4 +17,5 @@ return [
             'useFileTransport' => true,
         ],
     ],
+    'language'=>'zh-CN', // 设置中文
 ];
