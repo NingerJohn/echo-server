@@ -51,11 +51,41 @@ class Generate
         }
     }
 
-    public function token($value='')
+    /**
+     * passport
+     * @time 2016年10月08日22:09:03
+     * @param  array $base_data 基础数据
+     * @param  integer $ver 版本编号
+     * @return array        验证信息
+     */
+    public function passport($base_data, $ver=1)
     {
-        # code...
+        // 根据版本号生成不同的验证数据
+        if ( $ver == 1 ) {
+            # 版本编号1，根据用户ID（eg.FID1234, RID34），Device_ID来生成唯一识别数据
+            $fin_data['id'] = $base_data['uid'];
+            $fin_data['device_id'] = $base_data['device_id'];
+            $fin_data['sign_code'] = $base_data['sign_code'];
+            $fin_data['token'] = $base_data['token'];
+        } else {
+            # 其他版本
+        }
     }
 
+    /**
+     * 伪装用户ID
+     * @author NJ 2016年10月09日06:56:50
+     * @param  integer $uid 用户ID
+     * @return string       伪装后的用户识别编号
+     */
+    public function uuid($uid=0)
+    {
+        // 
+        $res = md5( rand(1000,9999) . date('Y-m-d') . $uid . rand(1000,9999) );
+        $preg = '/(\w{8})(\w{8})(\w{8})(\w{8})/';
+        preg_replace($preg, '$1-$2-$3-$4', $str);
+        return $res;
+    }
 
 
 
