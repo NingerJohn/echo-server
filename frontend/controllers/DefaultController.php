@@ -34,9 +34,26 @@ class DefaultController extends \frontend\core\FrontController
     {
         # code...
         $this->view->title = '注册页面';
+        // var_dump( (new \common\libraries\Generate)->uuid(1) );
         $view_data = [];
         return $this->render('register', $view_data);
     }
+
+    /**
+     * 注册提交方法
+     *
+     * @author 2016年09月30日16:15:12
+     * @return json json结果
+     */
+    public function actionRegSubmit()
+    {
+    	//
+    	// \common\libraries\Generate::passwordSalt();
+    	
+    	var_dump( $this->post() );
+    }
+
+
 
 	public function actionTest()
 	{
@@ -51,19 +68,6 @@ class DefaultController extends \frontend\core\FrontController
 
 		return $this->render('register_page', ['model'=>$model]);
 	}
-
-    /**
-     * 注册提交方法
-     *
-     * @author 2016年09月30日16:15:12
-     * @return json json结果
-     */
-    public function actionRegSubmit()
-    {
-    	//
-    	\common\libraries\Generate::passwordSalt();
-    	var_dump( $this->post() );
-    }
 
     public function actionLogin($value='')
     {
