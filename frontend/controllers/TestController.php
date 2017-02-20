@@ -7,12 +7,23 @@ use \PHPExcel\IOFactory;
 /**
 * 测试类
 */
-class TestController extends \common\core\BaseController
+class TestController extends \frontend\core\FrontController
 {
 
 
     public $enableCsrfValidation = true;
 
+    public function beforeAction($action)
+    {
+        // var_dump();exit;
+        // 关闭csrf
+        $disableCsrf = ['file-upload'];
+        if ( $this->request->isAjax && in_array($action->id, $disableCsrf) ) {
+            $this->enableCsrfValidation = false;
+            return true;
+        }
+        return true;
+    }
 
     public function actionOne($value='')
     {
@@ -23,6 +34,29 @@ class TestController extends \common\core\BaseController
         $data['one'] = 'oneeeee';
         return $this->render('one', $data);
     }
+
+    public function actionWebsocketTest($value='')
+    {
+        # code...
+        $view_data['is_login'] = '1';
+        return $this->render('websocket_test', $view_data);
+    }
+
+    public function actionTabexTest($value='')
+    {
+        # code...
+        $view_data = [];
+        return $this->render('/default/tabex-test', $view_data);
+    }
+
+    public function actionTabexDemo()
+    {
+        # code...
+        $view_data = [];
+        return $this->render('/default/tabex-demo', $view_data);
+    }
+
+
 
     public function apiTokenRedis($value='')
     {
@@ -111,25 +145,6 @@ class TestController extends \common\core\BaseController
         }
 
 	}
-
-	public function actionWebsocketTest($value='')
-	{
-		# code...
-		$view_data['is_login'] = '1';
-		return $this->render('websocket_test', $view_data);
-	}
-
-    public function beforeAction($action)
-    {
-        // var_dump();exit;
-        // 关闭csrf
-        $disableCsrf = ['file-upload'];
-        if ( $this->request->isAjax && in_array($action->id, $disableCsrf) ) {
-            $this->enableCsrfValidation = false;
-            return true;
-        }
-        return true;
-    }
 
     
     public function actionFileUpload()

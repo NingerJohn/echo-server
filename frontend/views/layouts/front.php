@@ -3,12 +3,12 @@ use \yii\web\View;
 use frontend\assets\AppAsset;
 
 
-// AppAsset::register($this);  // $this 代表视图对象
+AppAsset::register($this);  // $this 代表视图对象
 
 // $this->registerJsFile('/js/b.js', ['depends'=>['frontend\assets\AppAsset'], 'position'=>View::POS_HEAD]);
 
-$this->registerJsFile('/v1/js/jquery.min.1.12.3.js', ['depends'=>[], 'position'=>View::POS_HEAD]);
-$this->registerCssFile('/v1/css/bootstrap.min.css');
+// $this->registerJsFile('/v1/js/jquery.min.1.12.3.js', ['depends'=>[], 'position'=>View::POS_HEAD]);
+// $this->registerCssFile('/v1/css/bootstrap.min.css');
 
 
 ?>
