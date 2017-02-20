@@ -63,7 +63,7 @@ class Generate
         // 根据版本号生成不同的验证数据
         if ( $ver == 1 ) {
             # 版本编号1，根据用户ID（eg.FID1234, RID34），Device_ID来生成唯一识别数据
-            $fin_data['id'] = $base_data['uid'];
+            $fin_data['uuid'] = $base_data['uuid'];
             $fin_data['device_id'] = $base_data['device_id'];
             $fin_data['sign_code'] = $base_data['sign_code'];
             $fin_data['token'] = $base_data['token'];
@@ -81,9 +81,9 @@ class Generate
     public function uuid($uid=0)
     {
         // 
-        $res = md5( rand(1000,9999) . date('Y-m-d') . $uid . rand(1000,9999) );
-        $preg = '/(\w{8})(\w{8})(\w{8})(\w{8})/';
-        preg_replace($preg, '$1-$2-$3-$4', $str);
+        $str = md5( rand(1000,9999) . date('Y-m-d') . $uid . time() . rand(1000,9999) );
+        $preg = '/(\w{4})(\w{6})(\w{6})(\w{6})(\w{6})(\w{4})/';
+        $res = preg_replace($preg, '$1-$2-$3-$4-$5-$6', $str);
         return $res;
     }
 
