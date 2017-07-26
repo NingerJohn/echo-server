@@ -11,14 +11,12 @@ namespace frontend\controllers;
 */
 class DefaultController extends \frontend\core\FrontController
 {
-
-
+    /**
+     * site index page
+     * @return string   page string
+     */
 	public function actionIndex()
 	{
-		// code...
-        //
-        //
-        // var_dump('网站首页');
         $this->view->title = 'eCho - 面向Ubuntu使用者的即时聊天软件';
 		$view_data = [];
 		return $this->render('index', $view_data);
@@ -69,7 +67,7 @@ class DefaultController extends \frontend\core\FrontController
 		return $this->render('register_page', ['model'=>$model]);
 	}
 
-    public function actionLogin($value='')
+    public function actionLogin()
     {
         # code...
     }

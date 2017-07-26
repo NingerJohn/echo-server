@@ -1,48 +1,60 @@
 <?php
+
 namespace common\models;
 
 use Yii;
-use yii\base\NotSupportedException;
-use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
-use yii\web\IdentityInterface;
 
 /**
- * User model
+ * This is the model class for table "es_user".
  *
- * @property integer $id
+ * @property integer $user_id
  * @property string $username
- * @property string $password_hash
- * @property string $password_reset_token
+ * @property string $real_name
+ * @property string $nickname
  * @property string $email
- * @property string $auth_key
+ * @property string $mobile
+ * @property string $password
+ * @property string $hash_salt
+ * @property string $avatar
+ * @property string $last_login_ip
+ * @property integer $last_login_time
+ * @property integer $role_id
  * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
- * @property string $password write-only password
+ * @property string $id_number
+ * @property string $id_image
+ * @property integer $gender
+ * @property integer $birth_time
+ * @property integer $birth_province_id
+ * @property string $birth_province
+ * @property integer $birth_city_id
+ * @property string $birth_city
+ * @property string $qq
+ * @property integer $political_status
+ * @property integer $major_id
+ * @property string $major_name
+ * @property string $nationality
+ * @property integer $country_id
+ * @property string $country_name
+ * @property integer $university_id
+ * @property string $university_name
+ * @property integer $work_province_id
+ * @property string $work_province
+ * @property integer $work_city_id
+ * @property string $work_city
+ * @property integer $work_area_id
+ * @property string $work_area
+ * @property string $home_address
+ * @property string $register_verify_code
+ * @property integer $is_verified
  */
-class User extends ActiveRecord implements IdentityInterface
+class User extends \common\models\BaseAR
 {
-    const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
-
-
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%user}}';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
+        return 'es_user';
     }
 
     /**
@@ -51,139 +63,63 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            [['last_login_time', 'role_id', 'status', 'gender', 'birth_time', 'birth_province_id', 'birth_city_id', 'political_status', 'major_id', 'country_id', 'university_id', 'work_province_id', 'work_city_id', 'work_area_id', 'is_verified'], 'integer'],
+            [['username', 'real_name', 'nickname', 'university_name'], 'string', 'max' => 50],
+            [['email', 'home_address'], 'string', 'max' => 100],
+            [['mobile', 'last_login_ip'], 'string', 'max' => 15],
+            [['password', 'hash_salt'], 'string', 'max' => 32],
+            [['avatar', 'id_image'], 'string', 'max' => 150],
+            [['id_number', 'birth_province', 'birth_city', 'country_name', 'work_province', 'work_city', 'work_area'], 'string', 'max' => 20],
+            [['qq', 'major_name', 'nationality'], 'string', 'max' => 255],
+            [['register_verify_code'], 'string', 'max' => 10],
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public static function findIdentity($id)
+    public function attributeLabels()
     {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
-    }
-
-    /**
-     * Finds user by password reset token
-     *
-     * @param string $token password reset token
-     * @return static|null
-     */
-    public static function findByPasswordResetToken($token)
-    {
-        if (!static::isPasswordResetTokenValid($token)) {
-            return null;
-        }
-
-        return static::findOne([
-            'password_reset_token' => $token,
-            'status' => self::STATUS_ACTIVE,
-        ]);
-    }
-
-    /**
-     * Finds out if password reset token is valid
-     *
-     * @param string $token password reset token
-     * @return boolean
-     */
-    public static function isPasswordResetTokenValid($token)
-    {
-        if (empty($token)) {
-            return false;
-        }
-
-        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
-        $expire = Yii::$app->params['user.passwordResetTokenExpire'];
-        return $timestamp + $expire >= time();
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getId()
-    {
-        return $this->getPrimaryKey();
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getAuthKey()
-    {
-        return $this->auth_key;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function validateAuthKey($authKey)
-    {
-        return $this->getAuthKey() === $authKey;
-    }
-
-    /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return boolean if password provided is valid for current user
-     */
-    public function validatePassword($password)
-    {
-        return Yii::$app->security->validatePassword($password, $this->password_hash);
-    }
-
-    /**
-     * Generates password hash from password and sets it to the model
-     *
-     * @param string $password
-     */
-    public function setPassword($password)
-    {
-        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
-    }
-
-    /**
-     * Generates "remember me" authentication key
-     */
-    public function generateAuthKey()
-    {
-        $this->auth_key = Yii::$app->security->generateRandomString();
-    }
-
-    /**
-     * Generates new password reset token
-     */
-    public function generatePasswordResetToken()
-    {
-        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
-    }
-
-    /**
-     * Removes password reset token
-     */
-    public function removePasswordResetToken()
-    {
-        $this->password_reset_token = null;
+        return [
+            'user_id' => Yii::t('user', '用户ID'),
+            'username' => Yii::t('user', '用户名'),
+            'real_name' => Yii::t('user', '真实姓名'),
+            'nickname' => Yii::t('user', '昵称'),
+            'email' => Yii::t('user', '邮箱地址'),
+            'mobile' => Yii::t('user', '手机号码'),
+            'password' => Yii::t('user', '登陆密码'),
+            'hash_salt' => Yii::t('user', '密码盐值'),
+            'avatar' => Yii::t('user', '头像图片地址'),
+            'last_login_ip' => Yii::t('user', '上次登陆IP地址'),
+            'last_login_time' => Yii::t('user', '上次登陆时间'),
+            'role_id' => Yii::t('user', '角色ID'),
+            'status' => Yii::t('user', '用户状态（-1：被删除；1：正常；2：被加入黑名单；）'),
+            'id_number' => Yii::t('user', '身份证号码'),
+            'id_image' => Yii::t('user', '身份证图片地址'),
+            'gender' => Yii::t('user', '性别（1：男；2：女）'),
+            'birth_time' => Yii::t('user', '出生日期'),
+            'birth_province_id' => Yii::t('user', '籍贯省ID'),
+            'birth_province' => Yii::t('user', '籍贯省名字'),
+            'birth_city_id' => Yii::t('user', '籍贯市ID'),
+            'birth_city' => Yii::t('user', '籍贯市名字'),
+            'qq' => Yii::t('user', 'QQ号'),
+            'political_status' => Yii::t('user', '政治面貌（1：团员；2：党员）'),
+            'major_id' => Yii::t('user', '专业ID'),
+            'major_name' => Yii::t('user', '专业名称'),
+            'nationality' => Yii::t('user', '民族'),
+            'country_id' => Yii::t('user', '国家ID'),
+            'country_name' => Yii::t('user', '国家名字'),
+            'university_id' => Yii::t('user', '大学ID'),
+            'university_name' => Yii::t('user', '大学名字'),
+            'work_province_id' => Yii::t('user', '工作省ID'),
+            'work_province' => Yii::t('user', '工作省名字'),
+            'work_city_id' => Yii::t('user', '工作市ID'),
+            'work_city' => Yii::t('user', '工作市名字'),
+            'work_area_id' => Yii::t('user', '工作区ID'),
+            'work_area' => Yii::t('user', '工作区名字'),
+            'home_address' => Yii::t('user', '家庭住址（全）'),
+            'register_verify_code' => Yii::t('user', '注册验证码（邮件）'),
+            'is_verified' => Yii::t('user', '是否验证有效（-1：未验证；1：验证通过）'),
+        ];
     }
 }

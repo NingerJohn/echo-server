@@ -19,10 +19,10 @@
             </div>
 
             <div class="row" style="margin-top: 3%">
-                <div class="col-lg-6 col-lg-offset-3 login-btn" data-url="/default/login.html" style="height:35px;width:120px;background-color:#61A1E3;line-height:35px;color:white;font-size:16px;cursor: pointer;border-radius: 3px 3px;">
+                <div class="col-lg-6 col-lg-offset-3 login-btn" data-url="/site/login.html" style="height:35px;width:120px;background-color:#61A1E3;line-height:35px;color:white;font-size:16px;cursor: pointer;border-radius: 3px 3px;">
                     登陆
                 </div>
-                <div class="col-lg-6 col-lg-offset-2 register-btn" data-url="/default/register.html" style="height:35px;width:120px;background-color:#61A1E3;line-height:35px;color:white;font-size:16px;cursor: pointer;border-radius: 3px 3px;">
+                <div class="col-lg-6 col-lg-offset-2 register-btn" data-url="/site/register.html" style="height:35px;width:120px;background-color:#61A1E3;line-height:35px;color:white;font-size:16px;cursor: pointer;border-radius: 3px 3px;">
                     注册
                 </div>
             </div>
