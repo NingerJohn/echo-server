@@ -7,14 +7,14 @@ use Yii;
 /**
  * This is the model class for table "es_user".
  *
- * @property integer $user_id
+ * @property integer $uid
  * @property string $username
  * @property string $real_name
  * @property string $nickname
  * @property string $email
  * @property string $mobile
  * @property string $password
- * @property string $hash_salt
+ * @property string $password_hash
  * @property string $avatar
  * @property string $last_login_ip
  * @property integer $last_login_time
@@ -46,6 +46,10 @@ use Yii;
  * @property string $home_address
  * @property string $register_verify_code
  * @property integer $is_verified
+ * @property string $auth_key
+ * @property integer $created_at
+ * @property integer $updated_at
+ * @property string $password_reset_token
  */
 class User extends \common\models\BaseAR
 {
@@ -63,15 +67,16 @@ class User extends \common\models\BaseAR
     public function rules()
     {
         return [
-            [['last_login_time', 'role_id', 'status', 'gender', 'birth_time', 'birth_province_id', 'birth_city_id', 'political_status', 'major_id', 'country_id', 'university_id', 'work_province_id', 'work_city_id', 'work_area_id', 'is_verified'], 'integer'],
+            [['last_login_time', 'role_id', 'status', 'gender', 'birth_time', 'birth_province_id', 'birth_city_id', 'political_status', 'major_id', 'country_id', 'university_id', 'work_province_id', 'work_city_id', 'work_area_id', 'is_verified', 'created_at', 'updated_at'], 'integer'],
             [['username', 'real_name', 'nickname', 'university_name'], 'string', 'max' => 50],
             [['email', 'home_address'], 'string', 'max' => 100],
             [['mobile', 'last_login_ip'], 'string', 'max' => 15],
-            [['password', 'hash_salt'], 'string', 'max' => 32],
+            [['password', 'password_hash'], 'string', 'max' => 32],
             [['avatar', 'id_image'], 'string', 'max' => 150],
             [['id_number', 'birth_province', 'birth_city', 'country_name', 'work_province', 'work_city', 'work_area'], 'string', 'max' => 20],
             [['qq', 'major_name', 'nationality'], 'string', 'max' => 255],
             [['register_verify_code'], 'string', 'max' => 10],
+            [['auth_key', 'password_reset_token'], 'string', 'max' => 45],
         ];
     }
 
@@ -81,14 +86,14 @@ class User extends \common\models\BaseAR
     public function attributeLabels()
     {
         return [
-            'user_id' => Yii::t('user', '用户ID'),
+            'uid' => Yii::t('user', '用户ID'),
             'username' => Yii::t('user', '用户名'),
             'real_name' => Yii::t('user', '真实姓名'),
             'nickname' => Yii::t('user', '昵称'),
             'email' => Yii::t('user', '邮箱地址'),
             'mobile' => Yii::t('user', '手机号码'),
             'password' => Yii::t('user', '登陆密码'),
-            'hash_salt' => Yii::t('user', '密码盐值'),
+            'password_hash' => Yii::t('user', '密码盐值'),
             'avatar' => Yii::t('user', '头像图片地址'),
             'last_login_ip' => Yii::t('user', '上次登陆IP地址'),
             'last_login_time' => Yii::t('user', '上次登陆时间'),
@@ -120,6 +125,10 @@ class User extends \common\models\BaseAR
             'home_address' => Yii::t('user', '家庭住址（全）'),
             'register_verify_code' => Yii::t('user', '注册验证码（邮件）'),
             'is_verified' => Yii::t('user', '是否验证有效（-1：未验证；1：验证通过）'),
+            'auth_key' => Yii::t('user', '认证键名'),
+            'created_at' => Yii::t('user', 'Created At'),
+            'updated_at' => Yii::t('user', 'Updated At'),
+            'password_reset_token' => Yii::t('user', '密码重置唯一token值'),
         ];
     }
 }

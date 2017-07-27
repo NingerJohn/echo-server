@@ -70,7 +70,8 @@
         "cebe/markdown": "~1.0.0 | ~1.1.0",
 		"phpoffice/phpexcel":"dev-develop",
         "yii2tech/html2pdf": "^1.0",
-		"phpspec/php-diff":"*"
+		"phpspec/php-diff":"*",
+        "yiisoft/yii2-swiftmailer": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.4",

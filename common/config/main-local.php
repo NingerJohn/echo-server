@@ -14,7 +14,19 @@ return [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
+            'transport' => [ 
+                'class' => 'Swift_SmtpTransport', 
+                'host' => 'smtp.163.com', 
+                'username' => 'ningerjohn@163.com', 
+                'password' => 'Ninger1486', 
+                'port' => '25', 
+                'encryption' => 'tls', 
+            ], 
+            'messageConfig'=>[ 
+                'charset'=>'UTF-8', 
+                'from'=>['ningerjohn@163.com'=>'NingerJohn'] 
+            ], 
         ],
     ],
     'language'=>'zh-CN', // 设置中文
