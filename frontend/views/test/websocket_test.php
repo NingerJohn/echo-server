@@ -9,7 +9,7 @@
 <script>
 
 // 创建一个Socket实例
-var socket = new WebSocket('ws://192.168.31.130:9501'); 
+var socket = new WebSocket('ws://127.0.0.1:9501'); 
 
 // 打开Socket 
 socket.onopen = function(event) { 

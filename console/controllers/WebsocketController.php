@@ -20,7 +20,7 @@ class WebsocketController extends Controller
     public function actionIndex()
     {
         # 创建websocket对象；create a server object
-        $WS = new \swoole_websocket_server("192.168.1.40", 9501);
+        $WS = new \swoole_websocket_server("127.0.0.1", 9501);
         // 当新用户建立成功连接的时候，会触发下面的方法；trigger the following while new client connected
 	$WS->set(array(
 		'daemonize' => true,
