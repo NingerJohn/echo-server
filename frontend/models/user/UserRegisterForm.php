@@ -3,6 +3,8 @@ namespace frontend\models\user;
 
 /**
  * 注册模型
+ * @author  Ninger
+ * @datetime
  */
 class UserRegisterForm extends \common\models\FrontM
 {
@@ -11,17 +13,6 @@ class UserRegisterForm extends \common\models\FrontM
     public $email_code;
     public $pwd;
     public $cfm_pwd;
-
-    public function attributeLabels()
-    {
-        // 属性标签说明
-        return [
-            'email'=>'你最常用的邮箱地址',
-            'email_code'=>'邮箱验证码',
-            'pwd'=>'密码',
-            'cfm_pwd'=>'确认密码',
-        ];
-    }
 
     // 场景定义
     public function scenarios()
@@ -36,7 +27,6 @@ class UserRegisterForm extends \common\models\FrontM
     // 验证规则
     public function rules()
     {
-        # code...
         return [
             [['email', 'email_code', 'pwd', 'cfm_pwd'], 'required', 'on'=>'register'], // 注册的时候，这些字段都是必须的
             ['email', 'email'], // 邮箱必须符合邮箱规则
@@ -46,7 +36,16 @@ class UserRegisterForm extends \common\models\FrontM
         ];
     }
 
-
+    public function attributeLabels()
+    {
+        // 属性标签说明
+        return [
+            'email'=>'你最常用的邮箱地址',
+            'email_code'=>'邮箱验证码',
+            'pwd'=>'密码',
+            'cfm_pwd'=>'确认密码',
+        ];
+    }
 
 
 
